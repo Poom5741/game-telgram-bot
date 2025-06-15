@@ -1,0 +1,41 @@
+name = "telegram-gaming-bot"
+main = "src/worker.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+name = "telegram-gaming-bot-prod"
+
+[env.staging]
+name = "telegram-gaming-bot-staging"
+
+# Cloudflare D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "gaming-bot-db"
+database_id = "your-d1-database-id"  # Will be generated when you create the database
+
+# Environment Variables
+[vars]
+NODE_ENV = "production"
+
+# Secrets (set via CLI: wrangler secret put SECRET_NAME)
+# BOT_TOKEN - Your Telegram bot token
+# DEEPSEEK_API_KEY - Your DeepSeek API key  
+# ENCRYPTION_KEY - 32-character encryption key
+# JWT_SECRET - JWT secret key
+
+# KV Namespaces for caching (optional)
+[[kv_namespaces]]
+binding = "GAME_CACHE"
+id = "your-kv-namespace-id"
+preview_id = "your-preview-kv-id"
+
+# Durable Objects for real-time games (optional future feature)
+# [[durable_objects.bindings]]
+# name = "GAME_SESSIONS"
+# class_name = "GameSession"
+
+# [[migrations]]
+# tag = "v1"
+# new_classes = ["GameSession"]
