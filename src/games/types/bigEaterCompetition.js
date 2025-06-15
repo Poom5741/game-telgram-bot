@@ -1,7 +1,7 @@
 import { BaseGame } from './baseGame.js';
-import { createLogger } from '../../utils/logger.js';
+import { Logger } from '../../utils/workerLogger.js';
 
-const logger = createLogger('BigEaterCompetition');
+const logger = new Logger('BigEaterCompetition');
 
 export class BigEaterCompetitionGame extends BaseGame {
     constructor(config) {
